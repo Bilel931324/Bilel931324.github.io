@@ -248,9 +248,9 @@ footer{background:var(--dark);padding:64px 28px 28px;color:rgba(255,255,255,.35)
 .footer-col a:hover{color:var(--red)}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
 .footer-copy{font-size:11px;color:rgba(255,255,255,.25)}
-.footer-socials{display:flex;gap:18px}
-.footer-socials a{font-size:10px;letter-spacing:3px;color:rgba(255,255,255,.3);text-decoration:none;text-transform:uppercase;transition:color .2s}
-.footer-socials a:hover{color:var(--red)}
+.footer-socials{display:flex;gap:20px;align-items:center}
+.footer-socials a{color:rgba(255,255,255,.35);text-decoration:none;transition:color .3s,transform .3s;display:flex;align-items:center}
+.footer-socials a:hover{color:var(--red);transform:scale(1.15)}
 
 /* ── SCROLL REVEAL ── */
 .rv{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}
@@ -761,9 +761,15 @@ footer{background:var(--dark);padding:64px 28px 28px;color:rgba(255,255,255,.35)
   <div class="footer-bottom">
     <div class="footer-copy">© 2025 Seven-Prod — Paris, France</div>
     <div class="footer-socials">
-      <a href="https://instagram.com/S7vn_932" target="_blank">INSTAGRAM</a>
-      <a href="https://www.snapchat.com/add/bebeto_93200" target="_blank">SNAPCHAT</a>
-      <a href="https://tiktok.com/@shooter2958" target="_blank">TIKTOK</a>
+      <a href="https://instagram.com/S7vn_932" target="_blank" title="Instagram">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://www.snapchat.com/add/bebeto_93200" target="_blank" title="Snapchat">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.166.053C6.844.053 4.095 3.55 4.095 7.38c0 1.272.348 2.556.928 3.574.14.244.196.462.098.716-.084.218-.196.418-.292.6-.168.322-.35.632-.196.98.154.348.532.476.862.56.272.068.588.136.72.18-.098.218-.462.6-.742.826-.616.5-1.492.85-2.336.876-.41.012-.732.172-.882.548-.196.486.19.918.5 1.162.828.65 1.776 1.1 2.8 1.384.112.032.21.07.28.156.092.108.102.258.146.4.058.19.2.476.616.476.28 0 .63-.098 1.108-.2.572-.122 1.33-.082 1.776.132.862.414 1.618 1.342 3.23 1.342h.11c1.612 0 2.37-.928 3.23-1.342.446-.214 1.204-.254 1.776-.132.478.102.828.2 1.108.2.416 0 .558-.286.616-.476.044-.142.054-.292.146-.4.07-.086.168-.124.28-.156 1.024-.284 1.972-.734 2.8-1.384.31-.244.696-.676.5-1.162-.15-.376-.472-.536-.882-.548-.844-.026-1.72-.376-2.336-.876-.28-.226-.644-.608-.742-.826.132-.044.448-.112.72-.18.33-.084.708-.212.862-.56.154-.348-.028-.658-.196-.98-.096-.182-.208-.382-.292-.6-.098-.254-.042-.472.098-.716.58-1.018.928-2.302.928-3.574 0-3.83-2.75-7.327-8.07-7.327z"/></svg>
+      </a>
+      <a href="https://tiktok.com/@shooter2958" target="_blank" title="TikTok">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13a8.28 8.28 0 005.58 2.16v-3.44a4.85 4.85 0 01-3.77-1.26V6.69h3.77z"/></svg>
+      </a>
     </div>
   </div>
 </footer>
