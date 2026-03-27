@@ -285,8 +285,35 @@ nav {
 .success-title { font-family:var(--ft); font-size:40px; margin-bottom:10px; }
 .success-sub { font-family:var(--fs); font-style:italic; font-size:17px; color:var(--grey); line-height:1.65; }
 
+
+@media (max-width:767px) {
+  /* Services — liste éditoriale mobile */
+  .services-grid { grid-template-columns:1fr !important; background:var(--border); gap:1px; }
+  .sv-card { 
+    padding:28px 24px !important; 
+    flex-direction:row !important; 
+    align-items:flex-start !important; 
+    gap:20px !important; 
+    min-height:auto !important;
+  }
+  .sv-card.sv-featured { flex-direction:row !important; }
+  .sv-icon { width:40px !important; height:40px !important; margin-bottom:0 !important; flex-shrink:0 !important; margin-top:4px; }
+  .sv-num { display:none; }
+  .sv-name { font-size:clamp(20px,5vw,26px) !important; margin-bottom:8px !important; }
+  .sv-desc { font-size:13px !important; line-height:1.55 !important; margin-bottom:14px !important; }
+  .sv-tags { display:flex !important; gap:6px; flex-wrap:wrap; margin-bottom:14px !important; }
+  .sv-cta { font-size:10px !important; }
+  .sv-badge { top:10px !important; right:10px !important; font-size:8px !important; }
+  /* Carousel mobile */  
+  .w-card { grid-template-columns:1fr !important; min-height:auto !important; }
+  .w-card:nth-child(even) .w-thumb { order:0 !important; }
+  .w-card:nth-child(even) .w-info-side { order:1 !important; }
+  .w-thumb { min-height:260px !important; }
+  .w-info-side { padding:28px 24px !important; }
+}
+
 @media (min-width:768px) {
-  .services-grid { grid-template-columns:repeat(4,1fr); }
+  .services-grid { grid-template-columns:repeat(4,1fr); background:var(--border); }
   .devis-wrap { flex-direction:row; align-items:flex-start; gap:40px; }
   .devis-left { flex:0 0 300px; position:sticky; top:80px; }
   .devis-right { flex:1; }
@@ -344,10 +371,11 @@ footer { background:var(--dark); color:var(--cream); padding:52px 28px 28px; }
 .tarifs-intro { margin-bottom:60px; }
 .tarifs-sub { font-family:var(--fs); font-style:italic; font-size:clamp(16px,2.5vw,19px); color:var(--grey); line-height:1.7; max-width:520px; margin-top:20px; }
 .services-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:var(--border); }
-.sv-card { background:var(--cream); padding:48px 40px; display:flex; flex-direction:column; gap:0; position:relative; transition:background .3s; cursor:pointer; }
+.sv-card { background:var(--cream); padding:48px 40px; display:flex; flex-direction:column; gap:0; position:relative; transition:background .3s; cursor:pointer; overflow:hidden; }
 .sv-card:hover { background:var(--cream2); }
 .sv-card.sv-featured { background:var(--black); color:var(--white); }
 .sv-card.sv-featured:hover { background:var(--dark); }
+.sv-num { font-size:10px; letter-spacing:4px; color:var(--light); margin-bottom:16px; font-family:var(--fb); }
 .sv-badge { position:absolute; top:20px; right:20px; font-size:9px; letter-spacing:3px; text-transform:uppercase; background:var(--red); color:var(--black); padding:5px 11px; border-radius:1px; font-weight:bold; }
 .sv-icon { font-size:36px; margin-bottom:20px; }
 .sv-name { font-family:var(--ft); font-size:clamp(26px,3.5vw,38px); line-height:1; letter-spacing:-1px; margin-bottom:14px; }
@@ -438,6 +466,27 @@ footer { background:var(--dark); color:var(--cream); padding:52px 28px 28px; }
   .nav-desk { display:none; }
   .ham { display:flex; }
   .f-row2 { grid-template-columns:1fr; }
+  /* Services mobile — layout liste éditoriale */
+  .services-grid { grid-template-columns:1fr; gap:1px; }
+  .sv-card { padding:32px 24px; flex-direction:row; align-items:center; gap:20px; }
+  .sv-card.sv-featured { flex-direction:row; }
+  .sv-icon { width:36px; height:36px; margin-bottom:0; flex-shrink:0; }
+  .sv-name { font-size:22px; margin-bottom:6px; }
+  .sv-desc { font-size:13px; margin-bottom:12px; }
+  .sv-tags { display:none; }
+  .sv-content-mobile { flex:1; }
+  .sv-badge { top:12px; right:12px; }
+  /* Carousel mobile */
+  .w-card { grid-template-columns:1fr; min-height:auto; }
+  .w-card:nth-child(even) .w-thumb { order:0; }
+  .w-card:nth-child(even) .w-info-side { order:1; }
+  .w-thumb { min-height:280px; }
+  .w-info-side { padding:28px 24px; }
+  .w-name { font-size:clamp(28px,8vw,44px); }
+  /* Devis mobile */
+  .devis-wrap { gap:24px; }
+  .devis-left { padding:28px 24px; }
+  .devis-left-brand { font-size:clamp(36px,10vw,56px); }
 }
 </style>
 <!-- v1774578877150 -->
