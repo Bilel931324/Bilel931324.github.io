@@ -134,6 +134,311 @@ footer { background:var(--dark); color:var(--cream); padding:52px 28px 28px; }
 .footer-socials a { font-size:10px; letter-spacing:3px; color:rgba(255,255,255,.3); text-decoration:none; text-transform:uppercase; transition:color .2s; }
 .footer-socials a:hover { color:var(--red); }
 
+/* ── WORKS — IMAGE COMPLÈTE VISIBLE ── */
+.works { background:var(--black); padding:0; }
+
+/* Header */
+.works-head {
+  display:flex; justify-content:space-between; align-items:flex-end;
+  padding:48px 52px 32px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.works-head-left .s-eyebrow { color:var(--red); margin-bottom:8px; }
+.works-head-left .s-title {
+  font-family:var(--ft); font-size:clamp(28px,4vw,48px);
+  color:var(--white); line-height:.92; letter-spacing:-1px;
+}
+.works-head-right { text-align:right; }
+.works-count {
+  font-family:var(--ft); font-size:clamp(36px,5vw,60px);
+  color:rgba(255,255,255,.06); line-height:1; display:block; letter-spacing:-2px;
+}
+.works-count-lbl {
+  font-size:10px; letter-spacing:3px; text-transform:uppercase;
+  color:rgba(255,255,255,.2);
+}
+
+/* Carousel */
+.works-carousel { position:relative; overflow:hidden; background:var(--black); }
+
+/* Barre progression */
+#carouselProgress {
+  position:absolute; top:0; left:0; height:2px;
+  background:var(--red); z-index:20; width:0%; pointer-events:none;
+}
+
+/* Track */
+.works-track {
+  display:flex; width:500%;
+  transition:transform 0.72s cubic-bezier(0.77,0,0.18,1);
+  will-change:transform;
+}
+
+/* ── SLIDE : image complète visible ── */
+.w-slide {
+  flex:0 0 20%; width:20%;
+  display:flex; flex-direction:column;
+  background:var(--black);
+}
+
+/* Zone image — hauteur fixe, image entière visible */
+.w-slide-img {
+  width:100%;
+  height:72vh;
+  min-height:400px;
+  max-height:700px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#111;
+  position:relative;
+  overflow:hidden;
+}
+.w-slide-img img {
+  max-width:100%;
+  max-height:100%;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  display:block;
+  /* Ken Burns très léger — juste un souffle */
+  transition:transform 9s ease;
+  transform:scale(1.02);
+}
+.w-slide.active .w-slide-img img { transform:scale(1); }
+
+/* Overlay très léger uniquement sur les bords bas */
+.w-slide-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top,
+    rgba(0,0,0,.55) 0%,
+    transparent 30%
+  );
+  pointer-events:none;
+}
+
+/* Texte sous l'image — zone séparée, lisible */
+.w-slide-content {
+  padding:20px 36px 24px;
+  border-top:1px solid rgba(255,255,255,.06);
+  display:flex; align-items:center; justify-content:space-between;
+  gap:24px;
+}
+.w-slide-meta-row {
+  display:flex; align-items:center; gap:16px;
+}
+.w-slide-num {
+  font-size:10px; letter-spacing:4px;
+  color:var(--red); font-family:var(--fb); flex-shrink:0;
+}
+.w-slide-type {
+  font-size:9px; letter-spacing:3px; text-transform:uppercase;
+  color:rgba(255,255,255,.3);
+}
+.w-slide-title {
+  font-family:var(--ft);
+  font-size:clamp(22px,2.5vw,34px);
+  line-height:.92; letter-spacing:-1px;
+  color:var(--white); flex-shrink:0;
+}
+.w-slide-tags {
+  display:flex; gap:6px; flex-wrap:wrap;
+}
+.w-slide-tags span {
+  font-size:9px; letter-spacing:2px; text-transform:uppercase;
+  border:1px solid rgba(255,255,255,.15);
+  color:rgba(255,255,255,.35);
+  padding:3px 8px; border-radius:1px;
+}
+
+/* Nav */
+.works-nav {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:16px 52px;
+  border-top:1px solid rgba(255,255,255,.06);
+  background:var(--black);
+}
+.works-dots { display:flex; gap:8px; align-items:center; }
+.carousel-dot {
+  width:24px; height:2px;
+  background:rgba(255,255,255,.12);
+  border:none; padding:0; cursor:pointer;
+  transition:all .4s ease;
+}
+.carousel-dot.active { background:var(--red); width:40px; }
+.works-arrows { display:flex; gap:10px; }
+.c-arrow {
+  width:44px; height:44px;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:50%; background:transparent; color:var(--white);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; font-size:16px;
+  transition:all .25s ease; user-select:none;
+}
+.c-arrow:hover { background:var(--red); border-color:var(--red); }
+
+/* ── MOBILE ── */
+@media (max-width:767px) {
+  .works-head { padding:24px 20px 20px; flex-direction:column; gap:4px; align-items:flex-start; }
+  .works-count { font-size:32px; }
+  .works-nav { padding:14px 20px; }
+  .w-slide-img {
+    height:55vw;
+    min-height:240px;
+    max-height:380px;
+  }
+  .w-slide-content {
+    padding:14px 20px 16px;
+    flex-direction:column; align-items:flex-start; gap:8px;
+  }
+  .w-slide-title { font-size:clamp(18px,5vw,26px); }
+  .w-slide-tags { display:none; }
+}
+
+/* ── DESKTOP large ── */
+@media (min-width:1200px) {
+  .w-slide-img {
+    height:75vh;
+    max-height:800px;
+  }
+}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEVEN-PROD — Photographe &amp; Vidéaste Paris</title>
+<style>
+/* ── POLICES SYSTÈME — aucun chargement externe ── */
+:root {
+  --cream:  #F4EFE6;
+  --cream2: #EAE3D8;
+  --white:  #FAF7F2;
+  --black:  #0D0C0B;
+  --dark:   #1A1917;
+  --red:    #B8860B;
+  --red2:   #8B6508;
+  --grey:   #7A756E;
+  --light:  #C4BEB5;
+  --border: rgba(13,12,11,0.10);
+  --ft: Impact,'Arial Black',Arial,sans-serif;
+  --fs: Georgia,'Times New Roman',serif;
+  --fb: -apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;
+}
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { background:var(--white); color:var(--black); font-family:var(--fb); overflow-x:hidden; }
+
+/* ── LOADER ── */
+#loader { position:fixed; inset:0; z-index:9999; background:var(--black); display:flex; flex-direction:column; justify-content:center; align-items:center; gap:28px; animation:loaderFade 0.5s ease 1.6s forwards; pointer-events:auto; }
+@keyframes loaderFade { to { opacity:0; visibility:hidden; pointer-events:none; } }
+.ld-num { font-family:var(--ft); font-size:clamp(90px,18vw,170px); color:var(--white); line-height:1; letter-spacing:-3px; }
+.ld-pct { color:var(--red); }
+.ld-track { width:min(280px,72vw); height:1px; background:rgba(255,255,255,0.15); }
+.ld-bar { height:1px; background:var(--red); animation:ldBarFill 1.4s cubic-bezier(0.4,0,0.2,1) forwards; }
+@keyframes ldBarFill { from{width:0%} to{width:100%} }
+.ld-txt { font-size:10px; letter-spacing:6px; color:rgba(255,255,255,0.3); text-transform:uppercase; }
+
+/* ── NAV ── */
+nav { position:fixed; top:0; left:0; right:0; z-index:500; height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 28px; background:rgba(250,247,242,0.95); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
+.nav-logo { font-family:var(--ft); font-size:20px; letter-spacing:5px; color:var(--black); text-decoration:none; }
+.nav-logo .dot { color:var(--red); }
+.nav-desk { display:flex; align-items:center; gap:32px; }
+.nav-desk ul { display:flex; gap:24px; list-style:none; }
+.nav-desk a { font-size:12px; letter-spacing:1px; color:var(--grey); text-decoration:none; transition:color .2s; }
+.nav-desk a:hover { color:var(--black); }
+.nav-cta { background:var(--red); color:var(--white); font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:bold; padding:10px 20px; text-decoration:none; border-radius:2px; transition:background .2s; white-space:nowrap; }
+.nav-cta:hover { background:var(--red2); }
+.ham { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px; }
+.ham span { display:block; width:24px; height:2px; background:var(--black); transition:all .3s; }
+.ham.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.ham.open span:nth-child(2) { opacity:0; }
+.ham.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+.mob-nav { display:none; position:fixed; top:64px; left:0; right:0; bottom:0; background:var(--white); z-index:499; flex-direction:column; padding:28px; overflow-y:auto; border-top:1px solid var(--border); }
+.mob-nav.open { display:flex; }
+.mob-nav a { font-family:var(--ft); font-size:36px; letter-spacing:2px; color:var(--black); text-decoration:none; padding:16px 0; border-bottom:1px solid var(--border); transition:color .2s; }
+.mob-nav a:hover { color:var(--red); }
+.mob-nav .m-cta { margin-top:24px; background:var(--red); color:var(--white); font-family:var(--fb); font-size:13px; letter-spacing:3px; text-transform:uppercase; font-weight:bold; padding:18px; text-align:center; border-bottom:none; border-radius:2px; }
+
+/* ── HERO ── */
+.hero { min-height:100vh; padding:80px 28px 52px; display:flex; flex-direction:column; justify-content:flex-end; position:relative; overflow:hidden; background:var(--cream); }
+.hero-deco { position:absolute; top:0; right:0; width:48%; height:100%; background:linear-gradient(140deg,#1A1917 0%,#2D2B29 70%,#3A3835 100%); clip-path:polygon(22% 0,100% 0,100% 100%,0% 100%); pointer-events:none; }
+.hero-badge { position:absolute; top:88px; right:24px; width:96px; height:96px; z-index:3; }
+.hero-badge svg { width:100%; height:100%; animation:rotateBadge 14s linear infinite; transform-origin:center; }
+@keyframes rotateBadge { to{transform:rotate(360deg);} }
+.badge-center { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--fs); font-style:italic; font-size:20px; color:var(--white); }
+.hero-content { position:relative; z-index:2; }
+.hero-eyebrow { font-size:10px; letter-spacing:5px; text-transform:uppercase; color:var(--red); font-weight:bold; margin-bottom:18px; display:flex; align-items:center; gap:12px; }
+.hero-eyebrow::before { content:''; display:block; width:28px; height:1px; background:var(--red); flex-shrink:0; }
+.hero-h1 { font-family:var(--ft); font-size:clamp(58px,14vw,130px); line-height:.9; letter-spacing:-1px; margin-bottom:28px; }
+.hero-h1 .sub-it { display:block; font-family:var(--fs); font-style:italic; font-weight:400; font-size:.42em; color:var(--red); letter-spacing:4px; margin-bottom:6px; }
+.hero-desc { font-family:var(--fs); font-style:italic; font-size:clamp(15px,3.5vw,18px); color:var(--grey); line-height:1.7; max-width:380px; margin-bottom:24px; }
+.hero-btns { display:flex; flex-wrap:wrap; gap:12px; margin-bottom:32px; }
+.btn-fill { display:inline-flex; align-items:center; gap:10px; background:var(--black); color:var(--white); font-size:12px; letter-spacing:2px; text-transform:uppercase; font-weight:bold; padding:14px 24px; text-decoration:none; border-radius:2px; transition:background .25s; }
+.btn-fill:hover { background:var(--red); }
+.btn-border { display:inline-flex; align-items:center; gap:10px; border:2px solid var(--black); color:var(--black); font-size:12px; letter-spacing:2px; text-transform:uppercase; font-weight:bold; padding:12px 22px; text-decoration:none; border-radius:2px; transition:all .25s; }
+.btn-border:hover { border-color:var(--red); color:var(--red); }
+.hero-stats { display:flex; gap:28px; padding-top:24px; border-top:1px solid var(--border); }
+.h-stat-num { font-family:var(--ft); font-size:26px; line-height:1; }
+.h-stat-lbl { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--grey); margin-top:4px; }
+
+/* ── TICKER ── */
+.ticker { background:var(--black); padding:14px 0; overflow:hidden; white-space:nowrap; }
+.ticker-inner { display:inline-flex; animation:tickMove 20s linear infinite; }
+@keyframes tickMove { to{transform:translateX(-50%);} }
+.t-item { font-family:var(--ft); font-size:13px; letter-spacing:4px; padding:0 30px; text-transform:uppercase; color:var(--cream); }
+.t-sep { color:var(--red); font-size:10px; padding:0 2px; }
+
+/* ── SECTIONS ── */
+.section { padding:80px 28px; }
+.s-eyebrow { font-size:10px; letter-spacing:5px; text-transform:uppercase; color:var(--red); font-weight:bold; margin-bottom:10px; display:flex; align-items:center; gap:10px; }
+.s-eyebrow::before { content:''; display:block; width:18px; height:1px; background:var(--red); flex-shrink:0; }
+.s-title { font-family:var(--ft); font-size:clamp(38px,9vw,80px); line-height:.92; letter-spacing:-1px; }
+
+/* ── ABOUT ── */
+.about { background:var(--white); }
+.about-grid { display:flex; flex-direction:column; gap:44px; }
+.about-photo { aspect-ratio:4/5; background:linear-gradient(135deg,#1A1917,#2D2B29); border-radius:3px; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.about-hint { font-family:var(--fs); font-style:italic; font-size:15px; color:rgba(255,255,255,.18); }
+.about-tag { position:absolute; bottom:16px; left:16px; background:var(--red); color:white; font-size:9px; letter-spacing:3px; text-transform:uppercase; padding:7px 12px; }
+.about-p { font-family:var(--fs); font-style:italic; font-size:clamp(16px,4vw,19px); color:var(--grey); line-height:1.75; margin-bottom:32px; }
+.about-p strong { color:var(--black); font-style:normal; }
+.stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; border:1px solid var(--border); }
+.stat-box { background:var(--cream); padding:20px; }
+.stat-num { font-family:var(--ft); font-size:42px; line-height:1; }
+.stat-lbl { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--grey); margin-top:4px; }
+
+/* ── TÉMOIGNAGES ── */
+.testimonials { background:var(--cream); }
+.test-list { display:flex; flex-direction:column; gap:2px; margin-top:30px; }
+.test-card { background:var(--white); border:1px solid var(--border); padding:26px 22px; transition:border-color .25s; }
+.test-card:hover { border-color:var(--red); }
+.test-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; gap:10px; }
+.test-author { display:flex; align-items:center; gap:12px; }
+.test-av { width:44px; height:44px; border-radius:50%; background:var(--dark); color:white; display:flex; align-items:center; justify-content:center; font-family:var(--ft); font-size:18px; flex-shrink:0; }
+.test-name { font-family:var(--ft); font-size:17px; letter-spacing:1px; }
+.test-role { font-size:11px; color:var(--grey); margin-top:2px; }
+.test-stars { color:var(--red); font-size:13px; letter-spacing:2px; flex-shrink:0; }
+.test-quote { font-family:var(--fs); font-style:italic; font-size:clamp(15px,4vw,18px); line-height:1.7; color:var(--grey); }
+.test-quote strong { color:var(--black); font-style:normal; }
+.test-platform { margin-top:12px; font-size:10px; letter-spacing:3px; color:var(--red); text-transform:uppercase; }
+
+/* ── FOOTER ── */
+footer { background:var(--dark); color:var(--cream); padding:52px 28px 28px; }
+.footer-logo { font-family:var(--ft); font-size:clamp(46px,12vw,86px); line-height:.9; letter-spacing:-2px; margin-bottom:32px; padding-bottom:32px; border-bottom:1px solid rgba(255,255,255,.08); }
+.footer-logo span { color:var(--red); }
+.footer-cols { display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-bottom:36px; }
+.footer-col-h { font-size:9px; letter-spacing:5px; text-transform:uppercase; color:rgba(255,255,255,.3); margin-bottom:14px; }
+.footer-col ul { list-style:none; display:flex; flex-direction:column; gap:9px; }
+.footer-col a { font-family:var(--fs); font-style:italic; font-size:16px; color:rgba(255,255,255,.45); text-decoration:none; transition:color .2s; }
+.footer-col a:hover { color:var(--cream); }
+.footer-bottom { border-top:1px solid rgba(255,255,255,.08); padding-top:22px; display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center; }
+.footer-copy { font-size:11px; color:rgba(255,255,255,.25); }
+.footer-socials { display:flex; gap:18px; }
+.footer-socials a { font-size:10px; letter-spacing:3px; color:rgba(255,255,255,.3); text-decoration:none; text-transform:uppercase; transition:color .2s; }
+.footer-socials a:hover { color:var(--red); }
+
 /* ── WORKS CAROUSEL FULLSCREEN — standard photographes pro ── */
 .works { background:var(--black); padding:0; }
 
@@ -526,7 +831,6 @@ footer { background:var(--dark); color:var(--cream); padding:52px 28px 28px; }
 
 <!-- TRAVAUX -->
 <section class="works" id="works">
-  <!-- Header compact -->
   <div class="works-head rv">
     <div class="works-head-left">
       <div class="s-eyebrow">Portfolio</div>
@@ -534,103 +838,91 @@ footer { background:var(--dark); color:var(--cream); padding:52px 28px 28px; }
     </div>
     <div class="works-head-right">
       <span class="works-count">05</span>
-      <span class="works-count-lbl">projets sélectionnés</span>
+      <span class="works-count-lbl">projets</span>
     </div>
   </div>
 
-  <!-- Carousel fullscreen -->
   <div class="works-carousel">
     <div id="carouselProgress"></div>
     <div class="works-track" id="worksTrack">
 
-      <!-- Slide 1 -->
       <div class="w-slide">
         <div class="w-slide-img">
-          <img src="WhatsApp Image 2026-03-27 at 01.14.41.jpeg" alt="Mood Shot — Seven-Prod Paris" loading="lazy">
+          <img src="WhatsApp Image 2026-03-27 at 01.14.41.jpeg" alt="Mood Shot — Seven-Prod">
+          <div class="w-slide-overlay"></div>
         </div>
-        <div class="w-slide-overlay"></div>
         <div class="w-slide-content">
-          <div class="w-slide-meta">
-            <span class="w-slide-num">01 / 05</span>
+          <div class="w-slide-meta-row">
+            <span class="w-slide-num">01/05</span>
             <span class="w-slide-type">Portrait · Artistique</span>
           </div>
-          <div class="w-slide-title">MOOD<br>SHOT</div>
-          <div class="w-slide-sub">Studio — lumière contrastée, ambiance intense</div>
-          <div class="w-slide-tags"><span>Artiste</span><span>Studio</span><span>Portrait</span></div>
+          <div class="w-slide-title">MOOD SHOT</div>
+          <div class="w-slide-tags"><span>Artiste</span><span>Studio</span></div>
         </div>
       </div>
 
-      <!-- Slide 2 -->
       <div class="w-slide">
         <div class="w-slide-img">
-          <img src="WhatsApp Image 2026-03-27 at 01.14.41 (1).jpeg" alt="Urban Style — Seven-Prod Paris" loading="lazy">
+          <img src="WhatsApp Image 2026-03-27 at 01.14.41 (1).jpeg" alt="Urban Style — Seven-Prod">
+          <div class="w-slide-overlay"></div>
         </div>
-        <div class="w-slide-overlay"></div>
         <div class="w-slide-content">
-          <div class="w-slide-meta">
-            <span class="w-slide-num">02 / 05</span>
+          <div class="w-slide-meta-row">
+            <span class="w-slide-num">02/05</span>
             <span class="w-slide-type">Street · Mode</span>
           </div>
-          <div class="w-slide-title">URBAN<br>STYLE</div>
-          <div class="w-slide-sub">Paris — lumière naturelle, shooting terrain</div>
-          <div class="w-slide-tags"><span>Influenceur</span><span>250K abonnés</span></div>
+          <div class="w-slide-title">URBAN STYLE</div>
+          <div class="w-slide-tags"><span>Influenceur</span><span>Paris</span></div>
         </div>
       </div>
 
-      <!-- Slide 3 -->
       <div class="w-slide">
         <div class="w-slide-img">
-          <img src="WhatsApp Image 2026-03-27 at 01.14.41 (2).jpeg" alt="Paris Vibes — Seven-Prod" loading="lazy">
+          <img src="WhatsApp Image 2026-03-27 at 01.14.41 (2).jpeg" alt="Paris Vibes — Seven-Prod">
+          <div class="w-slide-overlay"></div>
         </div>
-        <div class="w-slide-overlay"></div>
         <div class="w-slide-content">
-          <div class="w-slide-meta">
-            <span class="w-slide-num">03 / 05</span>
+          <div class="w-slide-meta-row">
+            <span class="w-slide-num">03/05</span>
             <span class="w-slide-type">Duo · Reportage</span>
           </div>
-          <div class="w-slide-title">PARIS<br>VIBES</div>
-          <div class="w-slide-sub">Couleur dorée — ambiance naturelle de rue</div>
-          <div class="w-slide-tags"><span>Content</span><span>Paris</span></div>
+          <div class="w-slide-title">PARIS VIBES</div>
+          <div class="w-slide-tags"><span>Content</span><span>Couleur</span></div>
         </div>
       </div>
 
-      <!-- Slide 4 -->
       <div class="w-slide">
         <div class="w-slide-img">
-          <img src="WhatsApp Image 2026-03-27 at 01.15.11.jpeg" alt="Product Shot — Seven-Prod" loading="lazy">
+          <img src="WhatsApp Image 2026-03-27 at 01.15.11.jpeg" alt="Product Shot — Seven-Prod">
+          <div class="w-slide-overlay"></div>
         </div>
-        <div class="w-slide-overlay"></div>
         <div class="w-slide-content">
-          <div class="w-slide-meta">
-            <span class="w-slide-num">04 / 05</span>
+          <div class="w-slide-meta-row">
+            <span class="w-slide-num">04/05</span>
             <span class="w-slide-type">Brand Content</span>
           </div>
-          <div class="w-slide-title">PRODUCT<br>SHOT</div>
-          <div class="w-slide-sub">Montre — noir & blanc, mise en scène graphique</div>
-          <div class="w-slide-tags"><span>Marque</span><span>Bijouterie</span></div>
+          <div class="w-slide-title">PRODUCT SHOT</div>
+          <div class="w-slide-tags"><span>Marque</span><span>Noir &amp; Blanc</span></div>
         </div>
       </div>
 
-      <!-- Slide 5 -->
       <div class="w-slide">
         <div class="w-slide-img">
-          <img src="WhatsApp Image 2026-03-27 at 01.15.56.jpeg" alt="Street Cast — Seven-Prod" loading="lazy">
+          <img src="WhatsApp Image 2026-03-27 at 01.15.56.jpeg" alt="Street Cast — Seven-Prod">
+          <div class="w-slide-overlay"></div>
         </div>
-        <div class="w-slide-overlay"></div>
         <div class="w-slide-content">
-          <div class="w-slide-meta">
-            <span class="w-slide-num">05 / 05</span>
+          <div class="w-slide-meta-row">
+            <span class="w-slide-num">05/05</span>
             <span class="w-slide-type">Street · Portrait</span>
           </div>
-          <div class="w-slide-title">STREET<br>CAST</div>
-          <div class="w-slide-sub">Paris — couleur vive, lumière naturelle éditoriale</div>
+          <div class="w-slide-title">STREET CAST</div>
           <div class="w-slide-tags"><span>Mode</span><span>Editorial</span></div>
         </div>
       </div>
 
     </div>
 
-    <!-- Navigation -->
     <div class="works-nav">
       <div class="works-dots" id="carouselDots">
         <button class="carousel-dot active" onclick="goTo(0)"></button>
@@ -640,8 +932,8 @@ footer { background:var(--dark); color:var(--cream); padding:52px 28px 28px; }
         <button class="carousel-dot" onclick="goTo(4)"></button>
       </div>
       <div class="works-arrows">
-        <button class="c-arrow" onclick="carouselPrev()" aria-label="Précédent">&#8592;</button>
-        <button class="c-arrow" onclick="carouselNext()" aria-label="Suivant">&#8594;</button>
+        <button class="c-arrow" onclick="carouselPrev()">&#8592;</button>
+        <button class="c-arrow" onclick="carouselNext()">&#8594;</button>
       </div>
     </div>
   </div>
