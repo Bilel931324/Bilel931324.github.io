@@ -287,29 +287,48 @@ nav {
 
 
 @media (max-width:767px) {
-  /* Services — liste éditoriale mobile */
-  .services-grid { grid-template-columns:1fr !important; background:var(--border); gap:1px; }
-  .sv-card { 
-    padding:28px 24px !important; 
-    flex-direction:row !important; 
-    align-items:flex-start !important; 
-    gap:20px !important; 
-    min-height:auto !important;
+  /* ── Mobile global ── */
+  .nav-desk { display:none; }
+  .ham { display:flex; }
+  .f-row2 { grid-template-columns:1fr; }
+  
+  /* ── Services mobile — cartes verticales compactes ── */
+  .services-grid { 
+    grid-template-columns:1fr; 
+    background:var(--border); 
+    gap:1px;
   }
-  .sv-card.sv-featured { flex-direction:row !important; }
-  .sv-icon { width:40px !important; height:40px !important; margin-bottom:0 !important; flex-shrink:0 !important; margin-top:4px; }
-  .sv-num { display:none; }
-  .sv-name { font-size:clamp(20px,5vw,26px) !important; margin-bottom:8px !important; }
-  .sv-desc { font-size:13px !important; line-height:1.55 !important; margin-bottom:14px !important; }
-  .sv-tags { display:flex !important; gap:6px; flex-wrap:wrap; margin-bottom:14px !important; }
-  .sv-cta { font-size:10px !important; }
-  .sv-badge { top:10px !important; right:10px !important; font-size:8px !important; }
-  /* Carousel mobile */  
+  .sv-card { 
+    padding:24px 20px !important; 
+    flex-direction:column !important; 
+    gap:0 !important;
+  }
+  .sv-num { font-size:9px; letter-spacing:4px; color:var(--light); margin-bottom:12px; }
+  .sv-icon { width:32px; height:32px; margin-bottom:14px; }
+  .sv-name { font-size:22px; margin-bottom:8px; }
+  .sv-desc { font-size:13px; line-height:1.55; margin-bottom:14px; }
+  .sv-tags { margin-bottom:16px; }
+  .sv-tags span { font-size:9px; padding:3px 8px; }
+  .sv-cta { font-size:10px; }
+  .sv-badge { top:12px; right:12px; font-size:8px; padding:4px 8px; }
+
+  /* ── Carousel mobile ── */
   .w-card { grid-template-columns:1fr !important; min-height:auto !important; }
   .w-card:nth-child(even) .w-thumb { order:0 !important; }
   .w-card:nth-child(even) .w-info-side { order:1 !important; }
   .w-thumb { min-height:260px !important; }
   .w-info-side { padding:28px 24px !important; }
+  .w-name { font-size:clamp(28px,8vw,44px) !important; }
+  .carousel-nav { padding:20px 20px; }
+
+  /* ── Devis mobile ── */
+  .devis-wrap { gap:20px; }
+  .devis-left { padding:28px 20px; }
+  .devis-left-brand { font-size:clamp(40px,11vw,60px); }
+
+  /* ── About mobile ── */
+  .about-grid { flex-direction:column; gap:32px; }
+  .about-photo { aspect-ratio:4/3; }
 }
 
 @media (min-width:768px) {
