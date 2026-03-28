@@ -122,6 +122,20 @@ nav{position:fixed;top:0;width:100%;z-index:500;display:flex;justify-content:spa
 .c-arrow{width:44px;height:44px;border:1px solid rgba(255,255,255,.15);border-radius:50%;background:transparent;color:white;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;transition:.3s}
 .c-arrow:hover{border-color:var(--red);color:var(--red)}
 
+/* ── GALLERY GRID ── */
+.gallery{background:var(--black);padding:80px 28px;overflow:hidden}
+.gallery .s-eyebrow{color:var(--red);justify-content:center;margin-bottom:10px}
+.gallery .s-title{color:var(--white);text-align:center;margin-bottom:12px}
+.gallery-sub{font-family:var(--fs);font-style:italic;color:rgba(255,255,255,.4);font-size:15px;text-align:center;margin-bottom:40px}
+.gallery-grid{columns:2;column-gap:6px;overflow:hidden}
+.gallery-item{break-inside:avoid;margin-bottom:6px;overflow:hidden;border-radius:2px;position:relative;cursor:pointer}
+.gallery-item img{width:100%;display:block;transition:transform .6s cubic-bezier(.4,0,.2,1),filter .6s}
+.gallery-item:hover img{transform:scale(1.05)}
+.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 60%,rgba(0,0,0,.4));opacity:0;transition:opacity .4s}
+.gallery-item:hover::after{opacity:1}
+@media(min-width:768px){.gallery{padding:100px 48px}.gallery-grid{columns:3;column-gap:10px}.gallery-item{margin-bottom:10px}}
+@media(min-width:1100px){.gallery-grid{columns:4;column-gap:12px}.gallery-item{margin-bottom:12px}}
+
 /* ── ABOUT ── */
 .about{background:var(--white)}
 .about-grid{display:flex;flex-direction:column;gap:48px;margin-top:24px}
@@ -239,9 +253,10 @@ footer{background:var(--dark);padding:64px 28px 28px;color:rgba(255,255,255,.35)
 .footer-col a:hover{color:var(--red)}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center}
 .footer-copy{font-size:11px;color:rgba(255,255,255,.25)}
-.footer-socials{display:flex;gap:20px;align-items:center}
-.footer-socials a{color:rgba(255,255,255,.35);text-decoration:none;transition:color .3s,transform .3s;display:flex;align-items:center}
+.footer-socials{display:flex;gap:24px;align-items:center}
+.footer-socials a{color:rgba(255,255,255,.7);text-decoration:none;transition:color .3s,transform .3s;display:flex;align-items:center}
 .footer-socials a:hover{color:var(--red);transform:scale(1.15)}
+.footer-socials svg{width:28px;height:28px}
 
 /* ── SCROLL REVEAL ── */
 .rv{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}
@@ -293,6 +308,7 @@ footer{background:var(--dark);padding:64px 28px 28px;color:rgba(255,255,255,.35)
   <div class="nav-desk">
     <ul>
       <li><a href="#works">Travaux</a></li>
+      <li><a href="#galerie">Galerie</a></li>
       <li><a href="#about">À propos</a></li>
       <li><a href="#tarifs">Tarifs</a></li>
       <li><a href="#testimonials">Avis</a></li>
@@ -307,6 +323,7 @@ footer{background:var(--dark);padding:64px 28px 28px;color:rgba(255,255,255,.35)
 <!-- ── MOBILE NAV ── -->
 <div class="mob-nav" id="mobNav">
   <a href="#works" onclick="closeMenu()">Travaux</a>
+  <a href="#galerie" onclick="closeMenu()">Galerie</a>
   <a href="#about" onclick="closeMenu()">À propos</a>
   <a href="#tarifs" onclick="closeMenu()">Tarifs</a>
   <a href="#testimonials" onclick="closeMenu()">Avis clients</a>
@@ -550,6 +567,29 @@ footer{background:var(--dark);padding:64px 28px 28px;color:rgba(255,255,255,.35)
       <button class="c-arrow" onclick="carouselPrev()">←</button>
       <button class="c-arrow" onclick="carouselNext()">→</button>
     </div>
+  </div>
+</section>
+
+<!-- ── GALERIE ── -->
+<section class="gallery rv" id="galerie">
+  <div class="s-eyebrow">Shooting Studio</div>
+  <div class="s-title">LA GALERIE</div>
+  <p class="gallery-sub">Portraits, éditorial, direction artistique — chaque image raconte une histoire.</p>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="gal14.jpeg" alt="Portrait studio" loading="lazy"></div>
+    <div class="gallery-item"><img src="gal2.jpeg" alt="Portrait magazine" loading="lazy"></div>
+    <div class="gallery-item"><img src="gal3.jpeg" alt="Portrait profil" loading="lazy"></div>
+    <div class="gallery-item"><img src="gal4.jpeg" alt="Portrait N&B" loading="lazy"></div>
+    <div class="gallery-item"><img src="gal5.jpeg" alt="Portrait main" loading="lazy"></div>
+    <div class="gallery-item"><img src="gal6.jpeg" alt="Éditorial magazine" loading="lazy"></div>
+    <div class="gallery-item"><img src="gal7.jpeg" alt="Éditorial lecture" loading="lazy"></div>
+    <div class="gallery-item"><img src="gal8.jpeg" alt="Éditorial art" loading="lazy"></div>
+    <div class="gallery-item"><img src="gal9.jpeg" alt="Portrait lifestyle" loading="lazy"></div>
+    <div class="gallery-item"><img src="gal10.jpeg" alt="Portrait N&B lifestyle" loading="lazy"></div>
+    <div class="gallery-item"><img src="gal11.jpeg" alt="Éditorial close-up" loading="lazy"></div>
+    <div class="gallery-item"><img src="gal12.jpeg" alt="Portrait reach" loading="lazy"></div>
+    <div class="gallery-item"><img src="gal13.jpeg" alt="Portrait full" loading="lazy"></div>
+    <div class="gallery-item"><img src="gal1.jpeg" alt="Portrait prière" loading="lazy"></div>
   </div>
 </section>
 
