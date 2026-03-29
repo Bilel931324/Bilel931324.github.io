@@ -112,77 +112,84 @@ section{padding:120px 40px;}
 .showreel-label-text{font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);}
 .showreel-title{padding:0 40px 56px;font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,4rem);font-weight:900;line-height:1;letter-spacing:-.02em;}
 .showreel-title em{color:var(--gold);font-style:italic;}
-/* Outer layout: 3 col — left label | center video | right label */
+/* Stage: center the phone */
 .showreel-stage{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:48px;
+  display:flex;align-items:center;justify-content:center;gap:48px;
   padding:0 40px 100px;
 }
-/* Left/right decorative text */
 .showreel-side{
-  writing-mode:vertical-rl;
-  font-size:10px;
-  font-weight:600;
-  letter-spacing:.3em;
-  text-transform:uppercase;
-  color:var(--muted);
-  opacity:.5;
-  flex-shrink:0;
+  writing-mode:vertical-rl;font-size:10px;font-weight:600;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--muted);
+  opacity:.4;flex-shrink:0;
 }
-/* Phone frame container — 9:16 portrait */
+/* Phone frame — true 9:16 portrait */
 .showreel-phone{
   position:relative;
-  width:min(340px, 90vw);
+  width:min(320px,80vw);
   aspect-ratio:9/16;
   flex-shrink:0;
-  border-radius:24px;
+  border-radius:20px;
   overflow:hidden;
   background:#000;
-  box-shadow:0 40px 120px rgba(0,0,0,.8), 0 0 0 1px rgba(200,169,110,.15);
+  box-shadow:0 40px 100px rgba(0,0,0,.85),0 0 0 1px rgba(200,169,110,.2);
 }
-/* Video fills portrait frame perfectly */
 .showreel-phone video{
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+}
+/* TEXT MASKER — covers the TikTok caption zone (middle 40%) */
+.showreel-text-mask{
   position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-/* Grain overlay */
-.showreel-grain{
-  position:absolute;inset:0;z-index:2;pointer-events:none;
-  opacity:.05;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:128px;
-}
-/* Bottom bar info */
-.showreel-bar{
-  position:absolute;bottom:0;left:0;right:0;
-  padding:0 20px 20px;
-  display:flex;align-items:center;justify-content:space-between;
+  left:0;right:0;
+  top:35%;height:40%;
   z-index:3;
-  background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 100%);
+  background:linear-gradient(
+    to bottom,
+    rgba(7,7,7,0) 0%,
+    rgba(7,7,7,0.92) 20%,
+    rgba(7,7,7,0.96) 50%,
+    rgba(7,7,7,0.92) 80%,
+    rgba(7,7,7,0) 100%
+  );
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:8px;
+}
+/* Text over the mask — branded */
+.showreel-mask-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(18px,5vw,26px);
+  font-weight:900;color:var(--text);
+  letter-spacing:-.01em;text-align:center;
+  line-height:1.2;
+}
+.showreel-mask-title em{color:var(--gold);font-style:italic;}
+.showreel-mask-sub{
+  font-size:10px;font-weight:600;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--gold);opacity:.8;
+}
+/* Top vignette */
+.showreel-top{
+  position:absolute;top:0;left:0;right:0;height:22%;z-index:2;
+  background:linear-gradient(to bottom,rgba(7,7,7,.7),transparent);
+}
+/* Bottom bar */
+.showreel-bar{
+  position:absolute;bottom:0;left:0;right:0;padding:0 18px 18px;
+  display:flex;align-items:center;justify-content:space-between;
+  z-index:4;
+  background:linear-gradient(to top,rgba(7,7,7,.9) 0%,transparent 100%);
   padding-top:48px;
 }
 .showreel-badge{
-  font-size:10px;font-weight:700;letter-spacing:.25em;
+  font-size:9px;font-weight:700;letter-spacing:.25em;
   color:var(--gold);border:1px solid var(--gold-dim);
-  padding:6px 14px;background:rgba(0,0,0,.5);
-  backdrop-filter:blur(4px);
+  padding:6px 12px;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);
 }
-.showreel-tag{font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.4);text-transform:uppercase;}
-/* Vignette sides */
-.showreel-vignette{
-  position:absolute;inset:0;z-index:2;pointer-events:none;
-  box-shadow:inset 0 0 60px rgba(0,0,0,.4);
-}
+.showreel-tag{font-size:9px;letter-spacing:.12em;color:rgba(255,255,255,.35);text-transform:uppercase;}
 @media(max-width:768px){
-  .showreel-stage{padding:0 16px 64px;gap:0;}
+  .showreel-stage{padding:0 0 60px;gap:0;}
   .showreel-side{display:none;}
-  .showreel-phone{width:min(300px,85vw);border-radius:18px;}
+  .showreel-phone{width:min(280px,78vw);border-radius:16px;}
   .showreel-label{padding:60px 24px 28px;}
   .showreel-title{padding:0 24px 40px;}
 }
@@ -414,11 +421,14 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:60px 40
       <video autoplay muted loop playsinline preload="none">
         <source src="https://bilel931324.github.io/showreel.mp4" type="video/mp4"/>
       </video>
-      <div class="showreel-grain"></div>
-      <div class="showreel-vignette"></div>
+      <div class="showreel-top"></div>
+      <div class="showreel-text-mask">
+        <div class="showreel-mask-title">Tes photos<br/><em>méritent mieux</em></div>
+        <div class="showreel-mask-sub">Seven-Prod · Paris</div>
+      </div>
       <div class="showreel-bar">
         <div class="showreel-badge">▶ Showreel 2025</div>
-        <div class="showreel-tag">Paris</div>
+        <div class="showreel-tag">Photo · Vidéo</div>
       </div>
     </div>
     <div class="showreel-side fade-up">Photographe · Vidéaste · Artiste</div>
